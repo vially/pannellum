@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pannellum</title>
+  <link type="text/css" rel="Stylesheet" href="../css/pannellum.css"/>
+  <link type="text/css" rel="Stylesheet" href="standalone.css"/>
+  <script type="text/javascript">
+    let viewer = null
+
+    function togglePannellum() {
+      if (viewer) {
+        viewer.getRenderer().destroy()
+        viewer.destroy()
+        viewer = null
+      } else {
+        viewer = pannellum.viewer('container', {
+          type: 'equirectangular',
+          panorama: 'http://www.marzipano.net/media/equirect/angra.jpg',
+          autoLoad: true,
+          showControls: false,
+          orientationOnByDefault: true
+        })
+      }
+    }
+  </script>
+</head>
+<body>
+  <div><button style="margin: 10px;" onClick="togglePannellum()">Toggle Pannellum</button></div>
+  <div id="container"></div>
+  <script type="text/javascript" src="../js/libpannellum.js"></script>
+  <script type="text/javascript" src="../js/RequestAnimationFrame.js"></script>
+  <script type="text/javascript" src="../js/pannellum.js"></script>
+</body>
+</html>
